@@ -331,7 +331,7 @@ SL.forEach(s=>{
 });
 let idx=0;const N=SL.length;
 const dots=document.getElementById('dots'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
-SL.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.onclick=()=>go(i);dots.appendChild(b);});
+SL.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.setAttribute('aria-label','Go to slide '+(i+1));b.onclick=()=>go(i);dots.appendChild(b);});
 function go(i){idx=Math.max(0,Math.min(N-1,i));track.style.transform='translateX(-'+(idx*100)+'%)';
  [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===idx));
  count.textContent=String(idx+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');prev.disabled=idx===0;next.disabled=idx===N-1;
